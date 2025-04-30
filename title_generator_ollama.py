@@ -6,18 +6,24 @@ import sys, json
 
 OLLAMA_URL = "http://localhost:11434"
 BEST_MODELS_PRIORITY = ["llama3", "gemma", "mistral", "llama2", "phi", "codellama", "qwen"]
-CONTEXT = """
-You are a strict product title generator. Rewrite the given product title so it is **exactly** between 17 and 20 words long.
+CONTEXT =  """
+You are a strict and intelligent product title generator. Your task is to rewrite the provided product title to ensure it is grammatically correct, sounds natural when spoken, and falls within 7 to 10 words.
 
-Do not use emojis, special characters, or any marketing phrases like 'Introducing' or 'Experience'. Do not include explanations or suggestions. Only return the rewritten product title.
+Guidelines:
 
-The new title must include the product's name, brand, model number (if available), and its key features. Keep it formal and specific.
-
-Output format: One complete product title only. No extra characters, quotes, or line breaks.
+- Correct grammar, punctuation, and structure to ensure fluency and natural speech.
+- Fix or reword awkward or overly short titles to improve clarity and relevance.
+- Spell out standalone numbers (e.g., '2' becomes 'two') to reduce awkward pauses during text-to-speech (TTS).
+- Avoid emojis, special characters, or any marketing phrases like 'Introducing,' 'Get now,' or 'Experience the best.'
+- Abbreviations should only be used if they are widely recognized (e.g., USB, LED).
+- Include the product's name, brand, model number (if any), and highlight at least three key features such as functionality, compatibility, design, or performance.
+- Rewrite long product titles concisely while preserving critical details. Avoid redundancy.
+- Brand integrity must be maintained in the rewritten titles.
+- Output exactly one product title — no explanations, quotes, line breaks, or extra commentary.
 
 Example:
 Prompt: AOC KM100 Keyboard and Mouse Set
-Output: AOC KM100 Mechanical Keyboard and Mouse Set with Wireless Connectivity, Ergonomic Design, Durable Keys, and Quiet Operation
+Output: AOC KM100 Mechanical Keyboard and Mouse Set with Ergonomic Design, Wireless Connectivity, Quiet Keys, and USB Receiver Compatibility
 """
 
 
